@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock title %}
+
+{% block head %}
+<h1>Gallery</h1>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p class="text-warning">Scroll down </p>
+{% endblock head %}
+
+
+{% block body %}
+<br>
+<div class="container mt-2">
+    <div class="row">
+        {% for p in posts  %}
+        <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" src={{p.img.url}} alt="Card image cap" style="height: 300px;">
+                <div class="card-body">
+                  <h5 class="card-title">{{p.title}}</h5>
+                  <p class="card-text">Upload on: {{p.timeStamp}}</p>
+                  
+                </div>
+            </div>
+            <br>
+
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<br>
+
+  
+
+{% endblock body %}

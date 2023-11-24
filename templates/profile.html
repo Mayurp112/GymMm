@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock title %}
+
+{% block head %}
+<h1>Enrollment Profile</h1>
+
+<div class="container ">
+
+    <div class="row">
+    
+    <div class="col-md-2"> </div>
+    
+    <div class="col-md-8 "> 
+
+    {% for p in posts %}
+    
+    <ul class="list-group">
+        <li class="list-group-item bg-dark text-light">Name: {{p.FullName}}</li>
+        <li class="list-group-item bg-dark text-light">Email: {{p.Email}}</li>
+        <li class="list-group-item bg-dark text-light">PhoneNumber: {{p.PhoneNumber}}</li>
+        <li class="list-group-item bg-dark text-light">Gender: {{p.Gender}}</li>
+        <li class="list-group-item bg-dark text-light">DOB: {{p.DOB}}</li>
+        <li class="list-group-item bg-dark text-light">Membership Plan: {{p.SelectMembershipplan}}</li>
+        <li class="list-group-item bg-dark text-light">Trainer: {{p.SelectTrainer}}</li>
+        <li class="list-group-item bg-dark text-light">Address: {{p.Address}}</li>
+        <li class="list-group-item bg-dark text-light">PaymentStatus: {{p.PaymentStatus}}</li>
+        <li class="list-group-item bg-dark text-light">Fees: {{p.Price}}</li>
+        <li class="list-group-item bg-dark text-light">Joining Date: {{p.TimeStamp}}</li>
+        
+      
+      </ul>
+
+      {% empty %}
+
+      <a href="/enroll" class="text-warning">Enroll Here >></a>
+
+      {% endfor %} 
+    
+    
+    
+    <div class="col-md-2"> </div>
+    
+    </div>
+        
+    </div>
+    
+    
+{% endblock head %}
