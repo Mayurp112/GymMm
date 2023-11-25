@@ -8,95 +8,98 @@
 
 <div class="container mt-2">
 
-    <div class="row">
-    
+  <div class="row">
+
     <div class="col-md-3"> </div>
-    
-    <div class="col-md-6  "> 
-        {% for message in messages %}
-    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert" id="success-message">
+
+    <div class="col-md-6  ">
+      {% for message in messages %}
+      <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert" id="success-message">
         <strong></strong>{{message}}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
-    
-    {% endfor %}
-    
-    <form action="/enroll" method="post">{% csrf_token %}
-    
+
+      {% endfor %}
+
+      <form action="/enroll" method="post">{% csrf_token %}
+
         <div class="form-group">
-            <input type="text" class="form-control mt-2" name="fullname" placeholder="Name" required>
-          </div>
-    
-        <div class="form-group">
-          <input type="email" class="form-control mt-2" value={{user.email}} name="email" placeholder="Email" readonly required>
+          <input type="text" class="form-control mt-2" name="fullname" placeholder="Name" required>
         </div>
 
         <div class="form-group">
-            <input type="number" class="form-control mt-2" value={{user.username}} name="phonenumber" placeholder="Phone number" readonly required>
-          </div>
-
-        <div class="form-group">
-            <select class="form-control mt-2" name="gender" required>
-                <option selected>Select Gender</option>
-                <option value="M">Male</option>
-                <option value="F">Female</option>
-                <option value="O">Other</option>
-              </select>          
-            </div>
-
-        <div class="form-group">
-            <input type="date" class="form-control mt-2" name="dob" id='dob' placeholder='Date of Birth' required>
+          <input type="email" class="form-control mt-2" value={{user.email}} name="email" placeholder="Email" readonly
+            required>
         </div>
 
         <div class="form-group">
-            <select class="form-control mt-2" name="member" id='member' required>
-                <option selected disabled>Select Membership Plan</option>
-                {% for p in membership %}
-
-                <option value={{p.id}}>{{p.Plan}} - {{p.Price}}</option>
-                {% empty %}
-                
-                <option value='Not available'>Not available</option>
-
-                {% endfor %}
-
-            </select>
+          <input type="number" class="form-control mt-2" value={{user.username}} name="phonenumber"
+            placeholder="Phone number" readonly required>
         </div>
 
         <div class="form-group">
-            <select class="form-control mt-2" name="trainer" id='trainer'  required>
-                <option selected disabled>Select Trainer</option>
-                {% for t in selecttrainer %}
-
-                <option value={{t.id}}>{{t.Name}}</option>
-
-                {% empty %}
-                
-                <option value='Not available' selected disabled>Not available</option>
-
-                {% endfor %}
-
-            </select>
+          <select class="form-control mt-2" name="gender" required>
+            <option selected>Select Gender</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+            <option value="O">Other</option>
+          </select>
         </div>
-    
+
         <div class="form-group">
-            <textarea class="form-control mt-2" name="address" id="address" cols="5" rows="2" placeholder="Address"></textarea>
-          </div>
-          <br>
-    
+          <input type="date" class="form-control mt-2" name="dob" id='dob' placeholder='Date of Birth' required>
+        </div>
+
+        <div class="form-group">
+          <select class="form-control mt-2" name="member" id='member' required>
+            <option selected disabled>Select Membership Plan</option>
+            {% for p in membership %}
+
+            <option value={{p.id}}>{{p.Plan}} - {{p.Price}}</option>
+            {% empty %}
+
+            <option value='Not available'>Not available</option>
+
+            {% endfor %}
+
+          </select>
+        </div>
+
+        <div class="form-group">
+          <select class="form-control mt-2" name="trainer" id='trainer' required>
+            <option selected disabled>Select Trainer</option>
+            {% for t in selecttrainer %}
+
+            <option value={{t.id}}>{{t.Name}}</option>
+
+            {% empty %}
+
+            <option value='Not available' selected disabled>Not available</option>
+
+            {% endfor %}
+
+          </select>
+        </div>
+
+        <div class="form-group">
+          <textarea class="form-control mt-2" name="address" id="address" cols="5" rows="2"
+            placeholder="Address"></textarea>
+        </div>
+        <br>
+
         <div class="d-grid gap-2">
-            <button type="submit" class="btn btn-warning mt-2">Enroll</button>
+          <button type="submit" class="btn btn-warning mt-2">Enroll</button>
         </div>
       </form>
-       
-    
+
+
     </div>
-    
+
     <div class="col-md-3"> </div>
-    
-    </div>
-        
-    </div>
-    
+
+  </div>
+
+</div>
+
 
 {% endblock head %}

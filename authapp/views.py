@@ -43,7 +43,7 @@ def signup(request):
         myuser = User.objects.create_user(user,email,pass1)
         myuser.save()
 
-        messages.success(request,"User is created !")
+        messages.success(request," Registration Successfull")
 
         return redirect('/login')
     return render(request,'signup.html')
@@ -101,7 +101,7 @@ def enroll(request):
         address = request.POST.get('address')
 
         if Enrollment.objects.filter(Email=email )or Enrollment.objects.filter(PhoneNumber=phonenumber).exists():
-            messages.warning(request,"Already member")
+            messages.warning(request,"Already member Plz signin")
             return redirect('/enroll')
 
         myquery = Enrollment(
@@ -116,7 +116,7 @@ def enroll(request):
             )
         
         myquery.save()
-        messages.success(request,"Enrollment successful")
+        messages.success(request,"Enrollment successfull ")
         return redirect('/enroll')
 
     return render(request,'enroll.html',context)
@@ -126,6 +126,8 @@ def enroll(request):
 def profile(request):
     user = request.user.username
     posts = Enrollment.objects.filter(PhoneNumber=user)
+    #print(posts.count())
+    #print(posts)
     context = {"posts": posts}
     return render(request,'profile.html',context)
 
